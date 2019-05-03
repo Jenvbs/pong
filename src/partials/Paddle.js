@@ -2,22 +2,23 @@ import { SVG_NS, KEYS } from '../settings'
 
 export default class Paddle {
   constructor(boardHeight, width, height, x, y, moveUpKey, moveDownKey) {
-    this.boardHeight = boardHeight;
-    this.width = width;
-    this.height = height;
-    this.x = x;
-    this.y = y;
-    this.speed = 10;
-    this.score = 0;
+    this.boardHeight = boardHeight
+    this.width = width
+    this.height = height
+    this.x = x
+    this.y = y
+    this.speed = 10
+    this.score = 0
     this.moveUpKey = moveUpKey
     this.moveDownKey = moveDownKey
-
 
     document.addEventListener("keydown", (event) => {
       if (event.key === this.moveUpKey) {
         this.up()
-      } else if (event.key === this.moveDownKey)
+      }
+      else if (event.key === this.moveDownKey) {
         this.down()
+      }
     })
   }
 
@@ -44,7 +45,6 @@ export default class Paddle {
     svg.appendChild(rect)
   }
 }
-
 
 
 
