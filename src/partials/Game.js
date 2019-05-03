@@ -55,6 +55,7 @@ export default class Game {
     this.board.render(svg)
     this.ball.render(svg)
     this.ball.ballMovement()
+    this.ball.wallBounce()
     this.paddle.render(svg)
     this.paddleTwo.render(svg)
   }

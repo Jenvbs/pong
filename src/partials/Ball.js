@@ -6,8 +6,8 @@ export default class Ball {
     this.boardWidth = boardWidth
     this.boardHeight = boardHeight
     this.direction = 1
-    this.vx = 1
-    this.vy = 1
+    this.vx = 5
+    this.vy = 5
     this.reset()
 
     document.addEventListener("keydown", (event) => {
@@ -17,6 +17,9 @@ export default class Ball {
       }
     })
   }
+
+
+  // set starting position and allow ball to move
 
   reset() {
     this.x = this.boardWidth / 2;
@@ -28,12 +31,20 @@ export default class Ball {
     this.vx = this.direction * (6 - Math.abs(this.vy));
   }
 
+  ballMovement() {
+    this.x += this.vx;
+    this.y += this.vy;
+  }
+
+
+  // allow ball to bounce off walls
+
   wallBounce() {
     const hitTop = this.y - this.radius <= 0
-    const higtBottom = this.y + this.radius >= this.boardHeight
+    const hitBottom = this.y + this.radius >= this.boardHeight
 
     const hitLeft = this.x - this.radius <= 0
-    const higtRight = this.x + this.radius >= this.boardWidth
+    const hitRight = this.x + this.radius >= this.boardWidth
 
     if (hitLeft || hitRight) {
       this.vx = -this.vx
@@ -42,11 +53,7 @@ export default class Ball {
     }
   }
 
-  ballMovement() {
-    this.x += this.vx;
-    this.y += this.vy;
-  }
-
+  // render the ball to the board
   render(svg) {
     const circle = document.createElementNS(SVG_NS, 'circle')
     circle.setAttributeNS(null, "r", 8)
